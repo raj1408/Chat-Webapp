@@ -29,7 +29,12 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+
 app.post("/submit", (req, res) => {
+  const existingUser = Users.findOne(req.body.username);
+  if (!existingUser) {
+    
+  
   console.log(req.body);
       Users.create(req.body)
         .then(() => {
@@ -39,6 +44,10 @@ app.post("/submit", (req, res) => {
           console.error("Error creating user.", error);
         });
       res.render("signin.ejs");
+  }
+  else{
+    res.render("index.ejs",{existingUser:true});
+  }
     });
 
     app.post("/signin", async (req, res) => {
