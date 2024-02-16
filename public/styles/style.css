@@ -93,8 +93,6 @@ button{
     font-family: "Italianno",cursive;
     color: rgb(137, 33, 33);
     font-size: 30px;
-    position: absolute;
-    bottom: 30px;
 }
 .login_container{
     margin-top: 30px;
