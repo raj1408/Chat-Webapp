@@ -76,12 +76,12 @@
                     <button type="submit">Submit</button>
                 </form>
                 <a href="./signin"><button type="submit">Sign in</button></a>
+                <% if(locals.existingUser){ %>
+        <div id="l_error">Username already in use</div>
+        <% } %>
             </div>
         </div>
     </main>
-    <% if(locals.existingUser){ %>
-        <div id="l_error">Username already in use</div>
-        <% } %>
     <script>
         function validateMobileNumber() {
             let mobileInput = document.getElementById("mobile").value;
