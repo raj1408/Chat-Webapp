@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Benne&family=Cormorant:ital,wght@0,300..700;1,300..700&family=EB+Garamond:wght@500&family=Elsie&family=Great+Vibes&family=Gruppo&family=Libre+Baskerville:ital@0;1&family=Lobster+Two:ital,wght@1,700&family=PT+Sans&family=Poppins:ital,wght@1,100&family=Quattrocento&family=Roboto:wght@300&family=Satisfy&display=swap"
+        rel="stylesheet">
+        <style>
+            .error{
+                font-family: "Satisfy",cursive;
+                font-size: 30px;
+                color: rgb(137, 33, 33);
+                position: absolute;
+                bottom: 80px;
+                text-decoration: underline;
+            }
+        </style>
+</head>
+
+<body>
+    <main>
+        <h2>Sign in</h2>
+        <div class="login_container">
+            <div class="login_content">
+                <form action="/signin" method="post">
+                    <label for="username">
+                        Username
+                        <input class="login_input" type="text" id="username" name="username" required>
+                    </label>
+                    <label for="password">
+                        Password
+                        <input class="login_input" type="password" id="password" name="password" required>
+                    </label>
+                    <button type="submit">Sign in</button>
+            </div>
+    </main>
+    <% if(locals.error) { %>
+        <div class="error">Please enter valid credentials.</div>
+        <% } %>
+</body>
+
+</html>

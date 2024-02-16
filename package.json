@@ -1,0 +1,21 @@
+{
+  "name": "task-1",
+  "version": "1.0.0",
+  "description": "Nodejs Task 1",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raj Saini",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.2",
+    "path": "^0.12.7"
+  }
+}

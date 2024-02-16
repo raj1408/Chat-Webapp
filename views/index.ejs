@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Benne&family=Cormorant:ital,wght@0,300..700;1,300..700&family=EB+Garamond:wght@500&family=Elsie&family=Great+Vibes&family=Gruppo&family=Libre+Baskerville:ital@0;1&family=Lobster+Two:ital,wght@1,700&family=PT+Sans&family=Poppins:ital,wght@1,100&family=Quattrocento&family=Roboto:wght@300&family=Satisfy&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <h2>Sign Up</h2>
+        <div class="container">
+            <div class="content">
+                <form action="/submit" method="post"
+                    onsubmit="return (validateMobileNumber()&&validUsername()&&validatePassword())">
+                    <label for="fname">
+                        First Name
+                        <input type="text" id="fname" name="fname" required>
+                    </label>
+                    <label for="lname">
+                        Last Name
+                        <input type="text" id="lname" name="lname">
+                    </label>
+                    <label for="number">
+                        Mobile Number
+                        <input type="mobile" id="mobile" name="mobile" required>
+                    </label>
+                    <div id="m_error"></div>
+                    <div class="adress">Adress
+                        <label for="street">
+                            Street
+                            <input type="text" id="street" name="street">
+                        </label>
+
+                        <label for="city">
+                            City
+                            <input type="text" id="city" name="city">
+                        </label>
+
+                        <label for="state">
+                            State
+                            <input type="text" id="state" name="state">
+                        </label>
+
+                        <label for="country">
+                            Country
+                            <input type="text" id="country" name="country">
+                        </label>
+
+                    </div>
+                    <label for="email">
+                        Email
+                        <input type="email" id="email" name="email" required>
+                    </label>
+
+                    <label for="username">
+                        Username
+                        <input type="text" id="username" name="username" required>
+                    </label>
+                    <div id="u_error"></div>
+                    <label for="password">
+                        Password
+                        <input type="password" id="password" name="password" required>
+                    </label>
+                    <div id="p_error"></div>
+                    <button type="submit">Submit</button>
+                </form>
+                <a href="./signin"><button type="submit">Sign in</button></a>
+            </div>
+        </div>
+    </main>
+    <script>
+        function validateMobileNumber() {
+            let mobileInput = document.getElementById("mobile").value;
+
+            let mobileRegex = /^\d{10}$/;
+
+            if (!mobileRegex.test(mobileInput)) {
+                document.getElementById("m_error").innerText = "Please enter a valid 10 digit mobile number";
+                return false;
+            }
+
+            return true;
+        }
+        function validUsername() {
+            let alphanumericRegex = /^[a-zA-Z0-9]{8,}$/;
+            let username_input = document.getElementById("username").value;
+            if (!alphanumericRegex.test(username_input)) {
+                document.getElementById("u_error").innerText = "Please enter a valid username( containing only alphabets and numbers atleast 8 characters.)";
+                return false;
+            }
+            return true;
+        }
+        function validatePassword() {
+            let password_input = document.getElementById("password").value;
+            let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+            if (!passwordRegex.test(password_input)) {
+                document.getElementById("p_error").innerText = "Please enter a valid password(Consisting of 1 uppercase letter 1 lowercase letter 1 special character atleast 6 characters)";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
