@@ -124,3 +124,17 @@ button{
 a{
     display: block;
 }
+@media (min-width:250px) and (max-width : 450px){
+    .container{
+     width: 250px;
+    }
+    .adress{
+        height: 370px;
+    }
+    label{
+        margin: 5px;
+    }
+    .login_container{
+        width: 250px;
+    }
+}
