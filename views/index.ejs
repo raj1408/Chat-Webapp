@@ -79,6 +79,9 @@
             </div>
         </div>
     </main>
+    <% if(locals.existingUser){ %>
+        <div id="l_error">Username already in use</div>
+        <% } %>
     <script>
         function validateMobileNumber() {
             let mobileInput = document.getElementById("mobile").value;
