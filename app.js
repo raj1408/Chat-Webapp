@@ -30,25 +30,31 @@ app.get("/", (req, res) => {
 });
 
 
-app.post("/submit", (req, res) => {
-  const existingUser = Users.findOne(req.body.username);
-  if (!existingUser) {
-    
-  
-  console.log(req.body);
-      Users.create(req.body)
-        .then(() => {
-          console.log("User created.");
-        })
-        .catch((error) => {
-          console.error("Error creating user.", error);
-        });
+app.post("/submit", async (req, res) => {
+  try {
+    // Use async/await to wait for the findOne operation to complete
+    const existingUser = await Users.findOne({ username: req.body.username });
+    console.log(existingUser);
+    if (!existingUser) {
+      console.log(req.body);
+
+      // Create a new user
+      await Users.create(req.body);
+      
+      console.log("User created.");
       res.render("signin.ejs");
+    } else {
+      // User already exists
+      res.render("index.ejs", { existingUser: true });
+    }
+  } catch (error) {
+    console.error("Error processing user request.", error);
+    // Handle the error appropriately, e.g., render an error page or send an error response
+    res.status(500).send("Internal Server Error");
   }
-  else{
-    res.render("index.ejs",{existingUser:true});
-  }
-    });
+});
+
+
 
     app.post("/signin", async (req, res) => {
       const { username, password } = req.body;
