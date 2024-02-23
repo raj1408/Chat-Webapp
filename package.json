@@ -2,9 +2,11 @@
   "name": "task-1",
   "version": "1.0.0",
   "description": "Nodejs Task 1",
-  "main": "main.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Raj Saini",
@@ -14,8 +16,11 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "http": "^0.0.1-security",
+    "moment": "^2.30.1",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^4.7.4",
+    "use-query-params": "^2.2.1"
   }
 }
