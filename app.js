@@ -74,7 +74,7 @@ app.post("/signin", async (req, res) => {
     if (user) {
       const username = req.body.username;
       // Authentication successful
-      res.render("chatapp.ejs", { username: username });
+      res.render("chatapp.ejs", { user });
     } else {
       // Authentication failed
       res.status(401).render("signin.ejs", { error: true });
@@ -85,26 +85,9 @@ app.post("/signin", async (req, res) => {
   }
 });
 
-app.get("/:username/credentials", async (req, res) => {
-  try {
-    const username = req.params.username;
-
-    const user = await Users.findOne({ username: username });
-
-    if (user) {
-      console.log(user);
-      res.render("credentials.ejs", { user });
-    } else {
-      res.status(404).send("Credentials not found");
-    }
-  } catch (error) {
-    console.error("Error fetching user credentials:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
 io.on("connection", (socket) => {
   socket.on("active", (username) => {
+    socket.emit("socket_id", (socket.id));
     active_users[socket.id] = username;
     socket.broadcast.emit("join", active_users[socket.id]);
 
