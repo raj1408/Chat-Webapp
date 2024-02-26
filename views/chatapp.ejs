@@ -30,9 +30,9 @@
     <header>
         <div class="nav">
             <img src="/images/telegram-6739316_640.jpg" alt="Logo">
-            <% if(locals.username){ %>
-                <a href="/<%=username %>/credentials" class="username">
-                    <%= username %>
+            <% if(locals.user.username){ %>
+                <a onclick="toggleUserCredentialsPopup()" class="username">
+                    <%= user.username %>
                 </a>
                 <% } %>
                     <a onclick="togglePopup()">Active</a>
@@ -41,7 +41,41 @@
     <main>
         <h1>Welcome to chat room!</h1>
         <div class="chatbox">
-
+        
+            <div class="overlay" id="userCredentialsOverlay">
+                <div class="popup-box">
+                    <span class="close-btn" onclick="toggleUserCredentialsPopup()">&times;</span>
+                    <h2>Your Credentials</h2>
+                    <div class="c_content ">
+                        <% if(locals.user) { %>
+                            <p>
+                                <%= locals.user.fname%>
+                                    <%= locals.user.lname %>
+                            </p>
+                            <p>
+                                <%= locals.user.mobile %>
+                            </p>
+                            <div class="adress">Adress
+                                <p>
+                                    <%= locals.user.street %>
+                                </p>
+                                <p>
+                                    <%= locals.user.city %>
+                                </p>
+                                <p>
+                                    <%= locals.user.state %>
+                                </p>
+                                <p>
+                                    <%= locals.user.country %>
+                                </p>
+                            </div>
+                            <p>
+                                <%= locals.user.email %>
+                            </p>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
             <div class="overlay" id="overlay">
                 <div class="popup-box">
                     <span class="close-btn" onclick="togglePopup()">&times;</span>
@@ -89,6 +123,12 @@
                 <p class=" data text">${message.text}</p>`;
             document.querySelector(".chatbox").appendChild(div);
             window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        socket.on("socket_id", socket => {
+            const p = document.createElement('p');
+            p.innerHTML = `Scket ID : ${socket}`;
+            document.querySelector(".c_content").appendChild(p);
         });
 
         socket.on('join', user => {
