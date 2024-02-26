@@ -30,7 +30,7 @@
     <header>
         <div class="nav">
             <img src="/images/telegram-6739316_640.jpg" alt="Logo">
-            <% if(locals.user.username){ %>
+            <% if(locals.user){ %>
                 <a onclick="toggleUserCredentialsPopup()" class="username">
                     <%= user.username %>
                 </a>
@@ -41,7 +41,6 @@
     <main>
         <h1>Welcome to chat room!</h1>
         <div class="chatbox">
-        
             <div class="overlay" id="userCredentialsOverlay">
                 <div class="popup-box">
                     <span class="close-btn" onclick="toggleUserCredentialsPopup()">&times;</span>
@@ -86,7 +85,7 @@
             </div>
         </div>
         <div id="sendbox">
-            <form action="" id="form">
+            <form action="" id="form" accept-charset="UTF-8">
                 <input type="text" id="input">
                 <button>Send</button>
             </form>
@@ -116,7 +115,7 @@
             div.setAttribute("id", "messages");
             if (s_username == message.username) {
                 message.username = "you";
-                div.removeAttribute("id","messages");
+                div.removeAttribute("id", "messages");
                 div.classList.add("your_messages");
             }
             div.innerHTML = `<p class="meta data">${message.username}   <span>${message.time}</span></p>
@@ -167,6 +166,10 @@
         });
         function togglePopup() {
             var overlay = document.getElementById('overlay');
+            overlay.style.display = (overlay.style.display === 'none' || overlay.style.display === '') ? 'flex' : 'none';
+        }
+        function toggleUserCredentialsPopup() {
+            var overlay = document.getElementById('userCredentialsOverlay');
             overlay.style.display = (overlay.style.display === 'none' || overlay.style.display === '') ? 'flex' : 'none';
         }
     </script>
