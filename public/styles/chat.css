@@ -172,7 +172,6 @@ ul{
     font-size: 20px;
     color: #05445E;
 }
-
 @media (max-width:850px) {
     input {
         width: 90%;
