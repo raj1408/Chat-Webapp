@@ -160,6 +160,18 @@ ul{
     color: #FBE5C8;
     height: 20px;
 }
+.c_content {
+    max-height: 395px;
+    padding: 10px;
+    width: 360px;
+    border: solid 4px #29A0B1;
+    border-radius: 15px;
+}
+.c_content > p {
+    font-family: "Satisfy", cursive;
+    font-size: 20px;
+    color: #05445E;
+}
 
 @media (max-width:850px) {
     input {
